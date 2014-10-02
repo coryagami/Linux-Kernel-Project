@@ -4,7 +4,7 @@
  * Class       : Operating Systems, Project 2, Part 2
  *
  * Description : Kernel module that creates a "currentdate" file in /proc/
- * 				 that stores the current kernel time in Y-m-d H:M:S format.
+ * 		 that stores the current kernel time in Y-m-d H:M:S format.
  */
 
 #include <linux/module.h>
@@ -30,7 +30,6 @@ static int my_date_show(struct seq_file* m, void* v)
 	seq_printf(m, "%li-%02d-%02d %02d:%02d:%02d\n", 
 					result.tm_year+1900, result.tm_mon+1, result.tm_mday, 
 					result.tm_hour-sys_tz.tz_minuteswest/60, result.tm_min, result.tm_sec);
-					// maybe modify 'tm_hour-4' to be more portable/accurate...
 	return 0;
 }
 
